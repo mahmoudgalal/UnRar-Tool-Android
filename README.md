@@ -14,6 +14,9 @@ library from Rarlabs which provides faster and efficient decompression.
 8. Unicode support.
 9. Large file support (Larger than 2GB).
 
+<br/>UnRar Tool is published at Google Play Store:<br/>
+https://play.google.com/store/apps/details?id=com.aroma.unrartool
+<br/>
 More features will be added & bugs will be fixed. if you found any bugs or suggest any features feel free to e-mail me.<br/>
 Copyright (c) 2018 <br/>
 Mahmoud Galal
