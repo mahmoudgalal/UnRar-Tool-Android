@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">UnRar Tool</string>
+
+    <string name="menu_about">About</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+    <string name="newfolderdialogtitle">New Folder</string>
+    <string name="extractto">Extract to</string>
+    <string name="browse">Browse...</string>
+    <string name="setpassword">Set Password</string>
+    <string name="wait">Please wait...</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="arcCmt">Archive Comment</string>
+    <string name="arcSld">Archive Solid</string>
+    <string name="arcSnd">Archive Signed</string>
+    <string name="arcRrp">Recovery Record Present</string>
+    <string name="arcVol">Is Volume</string>
+    <string name="arcLoc">Archive Locked</string>
+    <string name="menu_share">Share</string>
+    <string name="loading">Loading...</string>
+    <string name="sharehdr">How do you want to share?</string>
+    <string name="new_">New</string>
+    <string name="newfolder">New Folder</string>
+    <string name="pathup">Up</string>
+    <string name="copystatus">Copyright 2018 Mahmoud Galal</string>
+    <string name="unrar">Unrar</string>
+    <string name="unrar_indexed">3- Unrar</string>
+    <string name="openarc">Open Archive</string>
+    <string name="unrardone">Unrar done !</string>
+    <string name="dircreationerr">Couldn\'t Create Directory</string>
+    <string name="direxists">Directory already exists!</string>
+    <string name="filecloserr">Error:File close error !</string>
+    <string name="readerr">Error:Read error !</string>
+    <string name="writerr">Error:Write error !</string>
+    <string name="filecrcerr">Error:File CRC error !</string>
+    <string name="filenotvaliderr">Error:File is not valid RAR archive !</string>
+    <string name="archiveformaterr">Error:Unknown archive format !</string>
+    <string name="archiveopenerr">Error:Archive open error !</string>
+    <string name="filecreaterr">Error:File create error !</string>
+    <string name="notfirstvol">Not The First Volume!</string>
+    <string name="processing">Processing</string>
+    <string name="aboutmsg">Unrar Tool v1.0 \n A simple tool to decompress RAR Archives.\nfor support contact me:\n mahmoudgalal57@yahoo.com\nCopyright 2018 \n  Mahmoud Galal</string>
+
+</resources>

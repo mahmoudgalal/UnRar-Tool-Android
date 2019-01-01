@@ -1,0 +1,45 @@
+<resources>
+
+    <string name="app_name">اداة ارشيف روشال</string>
+    <string name="cancel">الغاء</string>
+    <string name="ok">موافق</string>
+    <string name="wait">رجاء الانتظار...</string>
+    <string name="yes">نعم</string>
+    <string name="no">لا</string>
+     <string name="extractto">فك فى</string>
+    <string name="browse">تصفح...</string>
+    <string name="setpassword">ادخل كلمة السر</string>
+    <string name="arcCmt">تعليق الارشيف</string>
+    <string name="arcSld">الارشيف متكامل</string>
+    <string name="arcSnd">الارشيف موقع</string>
+    <string name="arcRrp">سجل الاستعادة متوفر</string>
+    <string name="arcVol">مجزء</string>
+    <string name="arcLoc">الارشيف مجمد</string>
+    <string name="menu_share">شير</string>
+    <string name="menu_about">حول البرنامج</string>
+    <string name="loading">جارى التحميل...</string>
+    <string name="sharehdr">كيف تريد المشاركة؟</string>
+    <string name="new_">جديد</string>
+    <string name="newfolder">سجل جديد</string>
+    <string name="newfolderdialogtitle">سجل جديد</string>
+    <string name="pathup">لاعلى</string>
+    <string name="copystatus">حقوق الطبع محفوظة  2018 محمود جلال</string>
+    <string name="unrar">فك</string>
+    <string name="unrar_indexed">3- فك</string>
+    <string name="openarc">افتح ارشيف</string>
+    <string name="unrardone">تم الفك !</string>
+    <string name="dircreationerr">خطأ فى انشاء سجل جديد</string>
+    <string name="direxists">المسار موجود بالفعل</string>
+    <string name="filecloserr">خطأ فى غلق الملف !</string>
+    <string name="readerr">خطأ فى القراءة !</string>
+    <string name="writerr">خطأ فى الكتابة !</string>
+    <string name="filecrcerr">خطأ سى ار سى فى الملف !</string>
+    <string name="filenotvaliderr">خطأ الارشيف ليس صالح !</string>
+    <string name="archiveformaterr">خطأ فى فورمات الارشيف !</string>
+    <string name="archiveopenerr">خطأ اثناء فتح الارشيف !</string>
+    <string name="filecreaterr">خطأ فى انشاء الملف !</string>
+    <string name="notfirstvol">هذا الجزء ليس الجزء الاول !</string>
+    <string name="processing">يعالج الان</string>
+    <string name="aboutmsg">اداة ارشيفات روشال النسخة 1.0 \n اداة بسيطة لفك ارشيفات روشال المضغوطة \nللدعم تواصل معى على :\mahmoudgalal57@yahoo.com \n حقوق الطبع محفوظة 2018 \n محمود جلال </string>
+
+</resources>
