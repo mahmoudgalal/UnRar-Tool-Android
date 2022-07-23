@@ -13,6 +13,7 @@ library from Rarlabs which provides faster and efficient decompression.
 7. View rar archive comments if present.
 8. Unicode support.
 9. Large file support (Larger than 2GB).
+10. Support for Rar v6 .
 
 ![](https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png)
 <br/>UnRar Tool is published at Google Play Store:<br/>
@@ -22,6 +23,11 @@ More features will be added & bugs will be fixed. if you found any bugs or sugge
 Copyright (c) 2018 <br/>
 Mahmoud Galal
 <br/>Support:mahmoudgalal57@yahoo.com
+<br/>
+### How to Build:
+- You need Android NDK to be installed first
+- Just Open the android studio project and build it
+- UnRar DLL v6.1.7 (the latest at the time) is used
 <br/><br/><br/>
 ![](https://github.com/mahmoudgalal/UnRar-Tool/blob/master/screenshots/1.png)
 ![](https://github.com/mahmoudgalal/UnRar-Tool/blob/master/screenshots/4.png)
