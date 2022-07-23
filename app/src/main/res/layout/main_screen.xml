@@ -1,4 +1,4 @@
-<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -55,7 +55,6 @@
             android:id="@+id/archive_name_txt"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-
             android:layout_weight="1"
             android:background="#ff0000"
             android:ellipsize="marquee"
@@ -101,7 +100,6 @@
             android:id="@+id/extractionpath"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-
             android:layout_weight="1"
             android:background="#666666"
             android:ellipsize="marquee"
@@ -127,13 +125,13 @@
         android:id="@+id/textView4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="3- UnRar "
+        android:text="@string/unrar_indexed"
         android:textColor="#ff0000"
         android:textSize="18sp"
         android:textStyle="italic" />
 
     <Button
-        android:id="@+id/okBtn"
+        android:id="@+id/unRarBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
@@ -142,6 +140,7 @@
         android:layout_marginTop="3dp"
         android:layout_marginBottom="3dp"
         android:text="@string/unrar"
+        android:textAllCaps="false"
         android:textColor="#ffffff"
         android:textStyle="bold" />
 
@@ -161,4 +160,4 @@
         android:textColor="#faffff"
         android:textSize="15sp" />
 
-</android.support.v7.widget.LinearLayoutCompat>
+</androidx.appcompat.widget.LinearLayoutCompat>
