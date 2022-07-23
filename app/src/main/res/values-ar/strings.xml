@@ -38,8 +38,11 @@
     <string name="archiveformaterr">خطأ فى فورمات الارشيف !</string>
     <string name="archiveopenerr">خطأ اثناء فتح الارشيف !</string>
     <string name="filecreaterr">خطأ فى انشاء الملف !</string>
+    <string name="bad_pass_err">خطأ فى انشاء الملف !</string>
+    <string name="archiveunknownerr">خطا غير معلوم !</string>
     <string name="notfirstvol">هذا الجزء ليس الجزء الاول !</string>
     <string name="processing">يعالج الان</string>
+    <string name="password">كلمه السر</string>
     <string name="aboutmsg">اداة ارشيفات روشال النسخة 1.0 \n اداة بسيطة لفك ارشيفات روشال المضغوطة \nللدعم تواصل معى على :\mahmoudgalal57@yahoo.com \n حقوق الطبع محفوظة 2018 \n محمود جلال </string>
 
 </resources>

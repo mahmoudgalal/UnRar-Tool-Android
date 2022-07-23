@@ -35,13 +35,16 @@
     <string name="filecloserr">Error:File close error !</string>
     <string name="readerr">Error:Read error !</string>
     <string name="writerr">Error:Write error !</string>
+    <string name="bad_pass_err">Error:Bad Password error !</string>
     <string name="filecrcerr">Error:File CRC error !</string>
     <string name="filenotvaliderr">Error:File is not valid RAR archive !</string>
     <string name="archiveformaterr">Error:Unknown archive format !</string>
     <string name="archiveopenerr">Error:Archive open error !</string>
+    <string name="archiveunknownerr">Error:Unknown error !</string>
     <string name="filecreaterr">Error:File create error !</string>
     <string name="notfirstvol">Not The First Volume!</string>
     <string name="processing">Processing</string>
+    <string name="password">Password</string>
     <string name="aboutmsg">Unrar Tool v1.0 \n A simple tool to decompress RAR Archives.\nfor support contact me:\n mahmoudgalal57@yahoo.com\nCopyright 2018 \n  Mahmoud Galal</string>
 
 </resources>

@@ -7,12 +7,16 @@
 package com.aroma.unrartool;
 
 
+import android.util.Log;
+
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 
 public class Unrar {
 
     //Rar lib error codes,see unrar.dll manual
+    public static final int ERAR_SUCCESS = 0;
     public static final int ERAR_END_ARCHIVE = 10;
     public static final int ERAR_NO_MEMORY = 11;
     public static final int ERAR_BAD_DATA = 12;
@@ -23,8 +27,9 @@ public class Unrar {
     public static final int ERAR_ECLOSE = 17;
     public static final int ERAR_EREAD = 18;
     public static final int ERAR_EWRITE = 19;
+    public static final int ERAR_BAD_PASSWORD = 24;
     //static final int  ERAR_SMALL_BUF          20
-    //static final int  ERAR_UNKNOWN            21
+    public static final int  ERAR_UNKNOWN =     21;
     //static final int  ERAR_MISSING_PASSWORD   22
 
     private volatile String passWord = null;
@@ -37,6 +42,9 @@ public class Unrar {
     public volatile boolean volume = false;
     public volatile boolean firstVolume = true;
     private AtomicBoolean passSet = new AtomicBoolean(false);
+    private CountDownLatch passwordRequestedSignal = new CountDownLatch(1);
+
+    private static final String TAG = Unrar.class.getSimpleName();
 
     static {
         System.loadLibrary("unrardyn");
@@ -52,9 +60,15 @@ public class Unrar {
         return passSet.get();
     }
 
+    /**
+     * Sets the requested password for the current Archive
+     * @param pass
+     */
     public void setPassWord(String pass) {
+        Log.d(TAG,"Archive Password set, Resuming...");
         passWord = pass;
         passSet.set(true);
+        passwordRequestedSignal.countDown();
     }
 
     /**
@@ -62,14 +76,21 @@ public class Unrar {
      * called from native code for internal purposes.
      * @return
      */
-     String getPassWord() {
+     private String getPassWord() {
         if (callListener != null) {
             callListener.onPassWordRequired();
-            do {
-                //spin wait for thread synchronization purposes
-            } while (!passSet.get());
+            try {
+                Log.d(TAG,"Waiting for Archive Password...");
+                passwordRequestedSignal.await();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
         return passWord;
+    }
+
+    private int onDataProcessed(int bytesProcessed) {
+        return (callListener != null) ? callListener.onDataProcessed(bytesProcessed) : 1;
     }
 
     private CallBackListener callListener = null;
@@ -97,7 +118,7 @@ public class Unrar {
      * @param handle
      * @return
      */
-    public native int RarCloseArchive(int handle);
+    native int RarCloseArchive(int handle);
 
     /**
      * Unused
@@ -106,7 +127,7 @@ public class Unrar {
      * @param DestPath
      * @return
      */
-    public native int RarProcessArchive(int handle, String DestPath);
+    native int RarProcessArchive(int handle, String DestPath);
 
     public void setCallBackListener(CallBackListener listener) {
         callListener = listener;
@@ -120,7 +141,6 @@ public class Unrar {
      */
     private void relayMessage(int messageID, String message) {
         if (callListener != null) {
-
             callListener.onFileProcessed(messageID, message);
         }
     }
@@ -133,8 +153,22 @@ public class Unrar {
 
         /**
          * Called when the archive is encrypted using a password.
-         * you should set the password using @setPassWord
+         * you should set the password using {@link #setPassWord(String) setPassWord}
          */
         void onPassWordRequired();
+
+        /**
+         * Called when Processing unpacked data. It may be used to read
+         * a file while it is being extracted or tested
+         * without actual extracting file to disk.
+         * Return a non-zero value to continue process
+         * or -1 to cancel the archive operation
+         * @param bytesProcessed :  Size of the unpacked data. It is guaranteed
+         * only that the size will not exceed the maximum
+         * dictionary size (4 Mb in RAR 3.0).
+         * @return a non-zero value to continue process
+         * or -1 to cancel the archive operation
+         */
+        int onDataProcessed(int bytesProcessed);
     }
 }
