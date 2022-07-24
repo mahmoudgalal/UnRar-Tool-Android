@@ -129,14 +129,14 @@ class MainScreenFragment : Fragment(), View.OnClickListener {
                 archiveData.text = ""
                 if (path == null) {
                     Toast.makeText(
-                        context, "Please select a Rar file !(Step :1)",
+                        context, R.string.no_file_selected,
                         Toast.LENGTH_LONG
                     ).show()
                     return
                 }
                 if (extractionPath == null) {
                     Toast.makeText(
-                        context, "Please select extraction directory !(Step :2)",
+                        context, R.string.no_directory_selected,
                         Toast.LENGTH_LONG
                     ).show()
                     return

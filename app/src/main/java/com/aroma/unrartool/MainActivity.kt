@@ -16,7 +16,6 @@ import com.aroma.unrartool.fragments.MainScreenFragment
 import android.view.ViewGroup
 import android.content.pm.PackageManager
 import androidx.core.content.ContextCompat
-import android.widget.Toast
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Handler
@@ -121,7 +120,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // TODO Auto-generated method stub
         return when (item.itemId) {
             R.id.menu_about -> {
                 showAboutDialog()
@@ -186,15 +184,12 @@ class MainActivity : AppCompatActivity() {
                 // Show an explanation to the user *asynchronously* -- don't block
                 // this thread waiting for the user's response! After the user
                 // sees the explanation, try again to request the permission.
-                Toast.makeText(
-                    this, """
-                    Please understand that you need to grant the app Read/Write Storage Permission
-                    to be able to use it .Go to device settings and enable Storage Permission for
-                     UnRar Tool.
-                     """.trimIndent(),
-                    Toast.LENGTH_LONG
-                ).show()
-                handler.postDelayed(permissionRunnable, 2600)
+                AlertDialog.Builder(this)
+                    .setCancelable(false)
+                    .setMessage(R.string.permission_msg)
+                    .setPositiveButton(R.string.ok) { _, _ ->
+                        permissionRunnable.run()
+                    }.show()
             } else {
                 // No explanation needed; request the permission
                 ActivityCompat.requestPermissions(

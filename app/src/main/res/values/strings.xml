@@ -45,6 +45,9 @@
     <string name="notfirstvol">Not The First Volume!</string>
     <string name="processing">Processing</string>
     <string name="password">Password</string>
-    <string name="aboutmsg">Unrar Tool v1.0 \n A simple tool to decompress RAR Archives.\nfor support contact me:\n mahmoudgalal57@yahoo.com\nCopyright 2018 \n  Mahmoud Galal</string>
+    <string name="no_file_selected">Please select a Rar file !(Step :1)</string>
+    <string name="no_directory_selected">Please select extraction directory !(Step :2)</string>
 
+    <string name="aboutmsg">Unrar Tool v2.0 \n A simple tool to decompress RAR Archives.\nfor support contact me:\n mahmoudgalal57@yahoo.com\nCopyright 2018 \n  Mahmoud Galal</string>
+    <string name="permission_msg">Please understand that you need to grant the app Read/Write Storage Permission to be able to use it .Go to device settings and enable Storage Permission for UnRarTool.</string>
 </resources>
