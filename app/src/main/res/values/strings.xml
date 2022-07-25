@@ -45,6 +45,7 @@
     <string name="notfirstvol">Not The First Volume!</string>
     <string name="processing">Processing</string>
     <string name="password">Password</string>
+    <string name="permission_denied">Permission Denied , App will not work correctly</string>
     <string name="no_file_selected">Please select a Rar file !(Step :1)</string>
     <string name="no_directory_selected">Please select extraction directory !(Step :2)</string>
 

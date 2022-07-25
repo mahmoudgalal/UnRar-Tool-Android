@@ -21,8 +21,10 @@ import android.content.res.Configuration
 import android.os.Handler
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
+import com.aroma.unrartool.utils.Utils.showMsg
 
 class MainActivity : AppCompatActivity() {
     private var lastRequestedBrowseMode = FileBrowserFragment.BROWSE_MODE_FILE
@@ -36,11 +38,13 @@ class MainActivity : AppCompatActivity() {
         )
     }
     private var splash: Splash? = null
+    private lateinit var mainContainer: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
         val myToolbar = findViewById<Toolbar>(R.id.main_bar)
+        mainContainer = findViewById(R.id.main_container)
         setSupportActionBar(myToolbar)
         if (savedInstanceState == null) {
             val mainScreenFragment: Fragment = MainScreenFragment()
@@ -162,6 +166,7 @@ class MainActivity : AppCompatActivity() {
                 } else {
                     // permission denied, boo! Disable the
                     // functionality that depends on this permission.
+                    showMsg(mainContainer, R.string.permission_denied)
                 }
             }
         }
@@ -202,7 +207,6 @@ class MainActivity : AppCompatActivity() {
         } else {
             // Permission has already been granted
             checkAllFilesAccess(this)
-            //true
         }
     }
 

@@ -33,6 +33,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.Fragment
+import com.aroma.unrartool.utils.Utils
 import com.aroma.unrartool.utils.Utils.buildProgressDialog
 import com.google.android.material.snackbar.Snackbar
 import java.util.concurrent.atomic.AtomicBoolean
@@ -128,17 +129,11 @@ class MainScreenFragment : Fragment(), View.OnClickListener {
                 processedFile.text = ""
                 archiveData.text = ""
                 if (path == null) {
-                    Toast.makeText(
-                        context, R.string.no_file_selected,
-                        Toast.LENGTH_LONG
-                    ).show()
+                    Utils.showMsg(requireView(),R.string.no_file_selected)
                     return
                 }
                 if (extractionPath == null) {
-                    Toast.makeText(
-                        context, R.string.no_directory_selected,
-                        Toast.LENGTH_LONG
-                    ).show()
+                    Utils.showMsg(requireView(),R.string.no_directory_selected)
                     return
                 }
                 task = UnrarTask()
@@ -314,6 +309,11 @@ class MainScreenFragment : Fragment(), View.OnClickListener {
 
         override fun onCancelled() {
             super.onCancelled()
+            isCancelled.set(true)
+        }
+
+        override fun onCancelled(result: Int?) {
+            super.onCancelled(result)
             isCancelled.set(true)
         }
     }

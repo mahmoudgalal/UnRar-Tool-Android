@@ -43,6 +43,7 @@
     <string name="notfirstvol">هذا الجزء ليس الجزء الاول !</string>
     <string name="processing">يعالج الان</string>
     <string name="password">كلمه السر</string>
+    <string name="permission_denied">تم رفض الإذن ، لن يعمل التطبيق بشكل صحيح</string>
     <string name="no_file_selected">الرجاء تحديد ملف Rar! (الخطوة: 1)</string>
     <string name="no_directory_selected">الرجاء تحديد مسار الاستخراج (الخطوة: 2)</string>
     <string name="aboutmsg">اداة ارشيفات روشال النسخة 2.0 \n اداة بسيطة لفك ارشيفات روشال المضغوطة \nللدعم تواصل معى على :\mahmoudgalal57@yahoo.com \n حقوق الطبع محفوظة 2018 \n محمود جلال </string>

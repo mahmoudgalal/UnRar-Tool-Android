@@ -11,9 +11,11 @@ import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.CompoundButton
 import android.widget.EditText
+import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatCheckBox
@@ -67,5 +69,9 @@ object Utils {
             .setOnDismissListener {
             }.create()
         return dialog
+    }
+
+    fun showMsg(anchorView: View, @StringRes msg: Int) {
+        Snackbar.make(anchorView, msg, Snackbar.LENGTH_SHORT).show()
     }
 }
