@@ -23,7 +23,7 @@
     <string name="newfolder">سجل جديد</string>
     <string name="newfolderdialogtitle">سجل جديد</string>
     <string name="pathup">لاعلى</string>
-    <string name="copystatus">حقوق الطبع محفوظة  2018 محمود جلال</string>
+    <string name="copystatus">حقوق الطبع محفوظة  2025 محمود جلال</string>
     <string name="unrar">فك</string>
     <string name="unrar_indexed">3- فك</string>
     <string name="openarc">افتح ارشيف</string>
@@ -46,7 +46,8 @@
     <string name="permission_denied">تم رفض الإذن ، لن يعمل التطبيق بشكل صحيح</string>
     <string name="no_file_selected">الرجاء تحديد ملف Rar! (الخطوة: 1)</string>
     <string name="no_directory_selected">الرجاء تحديد مسار الاستخراج (الخطوة: 2)</string>
-    <string name="aboutmsg">اداة ارشيفات روشال النسخة 2.0 \n اداة بسيطة لفك ارشيفات روشال المضغوطة \nللدعم تواصل معى على :\mahmoudgalal57@yahoo.com \n حقوق الطبع محفوظة 2018 \n محمود جلال </string>
+    <string name="invalid_password">Invalid Password !</string>
+    <string name="aboutmsg">اداة ارشيفات روشال النسخة 2.0 \n اداة بسيطة لفك ارشيفات روشال المضغوطة \nللدعم تواصل معى على :\mahmoudgalal57@yahoo.com \n حقوق الطبع محفوظة 2025 \n محمود جلال </string>
     <string name="permission_msg">يرجى تفهم أنك تحتاج إلى منح التطبيق إذن قراءة / كتابة التخزين لتتمكن من استخدامه. انتقل إلى إعدادات الجهاز وتمكين إذن التخزين لـ UnRarTool.</string>
 
 </resources>

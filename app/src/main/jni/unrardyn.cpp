@@ -262,19 +262,10 @@ JNIEXPORT jint JNICALL Java_com_aroma_unrartool_Unrar_RarOpenArchive
         }
 
         bool firstcheck = true;
-        RARHeaderDataEx header;
+        RARHeaderDataEx header{};
         memset(&header, 0, sizeof(RARHeaderDataEx));
         int headererror = ERAR_SUCCESS;
         while ((headererror = RARReadHeaderEx(handle, &header)) == ERAR_SUCCESS) {
-            if (mid != NULL) {
-                jstr = env->NewStringUTF(header.FileName);
-                if (jstr != NULL) {
-                    env->CallVoidMethod(obj, mid, 0, jstr);
-                    env->DeleteLocalRef(jstr);
-                } else
-                    LOGE("Unable to Create JString ,outofmemory error");/* out of memory */
-            }
-
             int result = RARProcessFile(handle, RAR_EXTRACT, extrPath, NULL);
             if (firstcheck) {
                 if (data.Flags & MHD_VOLUME) {
@@ -287,14 +278,14 @@ JNIEXPORT jint JNICALL Java_com_aroma_unrartool_Unrar_RarOpenArchive
                 }
                 firstcheck = false;
             }
-            if (mid != NULL) {
+            if (mid != nullptr) {
                 jstr = env->NewStringUTF(header.FileName);
-                if (jstr != NULL) {
+                if (jstr != nullptr) {
 
                     env->CallVoidMethod(obj, mid, result, jstr);
                     env->DeleteLocalRef(jstr);
                 } else
-                    LOGE("Unable to Create JString ,outofmemory error");/* out of memory */
+                    LOGE("Unable to Create JString ,out of memory error");
             }
             retresult = result;
             if (result) {

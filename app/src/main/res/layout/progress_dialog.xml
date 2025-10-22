@@ -12,13 +12,15 @@
         android:layout_gravity="center_vertical"
         android:indeterminate="true"
         app:indicatorColor="#ff6711" />
+
     <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/progress_message"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/wait"
-        android:gravity="center"
+        android:layout_gravity="center"
         android:layout_weight="1"
-        android:layout_gravity="center"/>
+        android:gravity="center"
+        android:text="@string/wait" />
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/unrarCancelBtn"
         android:layout_width="wrap_content"

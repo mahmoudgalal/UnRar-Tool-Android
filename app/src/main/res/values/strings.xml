@@ -25,7 +25,7 @@
     <string name="new_">New</string>
     <string name="newfolder">New Folder</string>
     <string name="pathup">Up</string>
-    <string name="copystatus">Copyright 2018 Mahmoud Galal</string>
+    <string name="copystatus">Copyright 2025 Mahmoud Galal</string>
     <string name="unrar">Unrar</string>
     <string name="unrar_indexed">3- Unrar</string>
     <string name="openarc">Open Archive</string>
@@ -48,7 +48,8 @@
     <string name="permission_denied">Permission Denied , App will not work correctly</string>
     <string name="no_file_selected">Please select a Rar file !(Step :1)</string>
     <string name="no_directory_selected">Please select extraction directory !(Step :2)</string>
+    <string name="invalid_password">Invalid Password !</string>
 
-    <string name="aboutmsg">Unrar Tool v2.0 \n A simple tool to decompress RAR Archives.\nfor support contact me:\n mahmoudgalal57@yahoo.com\nCopyright 2018 \n  Mahmoud Galal</string>
+    <string name="aboutmsg">Unrar Tool v2.0 \n A simple tool to decompress RAR Archives.\nfor support contact me:\n mahmoudgalal57@yahoo.com\nCopyright 2025 \n  Mahmoud Galal</string>
     <string name="permission_msg">Please understand that you need to grant the app Read/Write Storage Permission to be able to use it .Go to device settings and enable Storage Permission for UnRarTool.</string>
 </resources>

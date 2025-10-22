@@ -7,18 +7,20 @@ package com.aroma.unrartool
 
 import android.Manifest
 import android.app.AlertDialog
-import com.aroma.unrartool.utils.Utils.checkAllFilesAccess
 import androidx.appcompat.app.AppCompatActivity
 import com.aroma.unrartool.fragments.FileBrowserFragment
 import androidx.core.app.ActivityCompat
 import android.os.Bundle
-import com.aroma.unrartool.fragments.MainScreenFragment
+import com.aroma.unrartool.fragments.StartScreenFragment
 import android.view.ViewGroup
 import android.content.pm.PackageManager
 import androidx.core.content.ContextCompat
 import android.content.Intent
-import android.content.res.Configuration
+import android.net.Uri
+import android.os.Build
+import android.os.Environment
 import android.os.Handler
+import android.provider.Settings
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -47,11 +49,11 @@ class MainActivity : AppCompatActivity() {
         mainContainer = findViewById(R.id.main_container)
         setSupportActionBar(myToolbar)
         if (savedInstanceState == null) {
-            val mainScreenFragment: Fragment = MainScreenFragment()
+            val startScreenFragment: Fragment = StartScreenFragment()
             supportFragmentManager.beginTransaction()
                 .replace(
-                    R.id.main_container, mainScreenFragment,
-                    MainScreenFragment::class.java.simpleName
+                    R.id.main_container, startScreenFragment,
+                    StartScreenFragment::class.java.simpleName
                 )
                 .commit()
         }
@@ -91,15 +93,15 @@ class MainActivity : AppCompatActivity() {
 
     fun setSelectedFile(path: String?) {
         val fragment = supportFragmentManager.findFragmentByTag(
-            MainScreenFragment::class.java.simpleName
-        ) as MainScreenFragment?
+            StartScreenFragment::class.java.simpleName
+        ) as StartScreenFragment?
         if (fragment != null) fragment.openedArchivePath = path
     }
 
     fun setSelectedExtractionPath(path: String?) {
         val fragment = supportFragmentManager.findFragmentByTag(
-            MainScreenFragment::class.java.simpleName
-        ) as MainScreenFragment?
+            StartScreenFragment::class.java.simpleName
+        ) as StartScreenFragment?
         fragment?.setSelectedExtractionPath(path)
     }
 
@@ -107,6 +109,7 @@ class MainActivity : AppCompatActivity() {
         lastRequestedBrowseMode = mode
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         if (supportFragmentManager.backStackEntryCount > 0) {
             super.onBackPressed()
@@ -146,10 +149,6 @@ class MainActivity : AppCompatActivity() {
         alert.show()
     }
 
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        super.onConfigurationChanged(newConfig)
-    }
-
     override fun onRequestPermissionsResult(
         requestCode: Int, permissions: Array<String>,
         grantResults: IntArray
@@ -161,8 +160,7 @@ class MainActivity : AppCompatActivity() {
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     // read/write permission was granted,open file browser
-                    if(checkAllFilesAccess(this))
-                        openFileBrowser()
+                    openFileBrowser()
                 } else {
                     // permission denied, boo! Disable the
                     // functionality that depends on this permission.
@@ -174,39 +172,52 @@ class MainActivity : AppCompatActivity() {
 
     private fun checkStoragePermissionAndRequest(): Boolean {
 
-        // Here, thisActivity is the current activity
-        return if (ContextCompat.checkSelfPermission(this, EXTERNAL_PERMS[0])
-            != PackageManager.PERMISSION_GRANTED
-        ) {
-
-            // Permission is not granted
-            // Should we show an explanation?
-            if (ActivityCompat.shouldShowRequestPermissionRationale(
-                    this,
-                    EXTERNAL_PERMS[0]
-                )
-            ) {
-                // Show an explanation to the user *asynchronously* -- don't block
-                // this thread waiting for the user's response! After the user
-                // sees the explanation, try again to request the permission.
-                AlertDialog.Builder(this)
-                    .setCancelable(false)
-                    .setMessage(R.string.permission_msg)
-                    .setPositiveButton(R.string.ok) { _, _ ->
-                        permissionRunnable.run()
-                    }.show()
+        // For Android 11 (API 30) and above
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            if (Environment.isExternalStorageManager()) {
+                // Permission has already been granted
+                return true
             } else {
-                // No explanation needed; request the permission
-                ActivityCompat.requestPermissions(
-                    this,
-                    EXTERNAL_PERMS,
-                    MY_PERMISSIONS_REQUEST
-                )
+                // Permission is not granted, guide user to settings
+                val intent = Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION)
+                val uri = Uri.fromParts("package", packageName, null)
+                intent.data = uri
+                startActivity(intent)
+                return false
             }
-            false
         } else {
-            // Permission has already been granted
-            checkAllFilesAccess(this)
+            // Permission is not granted yet
+            if (ContextCompat.checkSelfPermission(this, EXTERNAL_PERMS[0])
+                != PackageManager.PERMISSION_GRANTED
+            ) {
+
+                // Permission is not granted
+                // Should we show an explanation?
+                if (ActivityCompat.shouldShowRequestPermissionRationale(
+                        this,
+                        EXTERNAL_PERMS[0]
+                    )
+                ) {
+                    // Show an explanation to the user *asynchronously* -- don't block
+                    // this thread waiting for the user's response! After the user
+                    // sees the explanation, try again to request the permission.
+                    AlertDialog.Builder(this)
+                        .setCancelable(false)
+                        .setMessage(R.string.permission_msg)
+                        .setPositiveButton(R.string.ok) { _, _ ->
+                            permissionRunnable.run()
+                        }.show()
+                } else {
+                    // No explanation needed; request the permission
+                    ActivityCompat.requestPermissions(
+                        this,
+                        EXTERNAL_PERMS,
+                        MY_PERMISSIONS_REQUEST
+                    )
+                }
+                return false
+            }
+            return true
         }
     }
 
@@ -231,6 +242,6 @@ class MainActivity : AppCompatActivity() {
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.READ_EXTERNAL_STORAGE
         )
-        private val MY_PERMISSIONS_REQUEST = 20101
+        private const val MY_PERMISSIONS_REQUEST = 20101
     }
 }
