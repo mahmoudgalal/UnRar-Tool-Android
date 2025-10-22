@@ -1,5 +1,5 @@
 # UnRar-Tool
-UnRar Tool is a simple and powerful utility to extract Rar archives. This application is built with the latest Unrar 
+UnRar Tool Android is a simple and powerful Android utility to extract Rar archives. This application is built with the latest Unrar 
 library from Rarlabs which provides faster and efficient decompression.
 <br/>
 ### The features included in the current version are :
