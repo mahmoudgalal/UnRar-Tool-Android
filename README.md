@@ -31,3 +31,6 @@ Mahmoud Galal
 <br/><br/><br/>
 ![](https://github.com/mahmoudgalal/UnRar-Tool/blob/master/screenshots/1.png)
 ![](https://github.com/mahmoudgalal/UnRar-Tool/blob/master/screenshots/4.png)
+
+### License:
+[MIT License](https://github.com/mahmoudgalal/UnRar-Tool-Android/blob/a2707900ce164c349c802b21c5cd2d4bafa00b52/LICENSE)
